@@ -1,68 +1,51 @@
-const refrigerantes = ["Coca", "Guaraná"];
-const sucos = ["Suco de Uva", "Suco de Laranja"];
-
+const knex = require('../config/conexao')
+const { refrigerantes, sucos } = require('../bebidasBancoDeDados');
 const pedido = async (req, res) => {
-    let { bebida, tamanho, gelo, viagem } = req.body
+    let { bebida, tamanho, gelo, entrega } = req.body
 
     let copoPapel = false;
-    let copoPlastico = false;
-    let tampaComFuro = false;
-    let quantidadeGelo = 0
+    let tampa_Com_Furo = false;
+    let quantidadeGelo = 0;
 
     try {
+        gelo === "sim" ? gelo = true : gelo = false;
+        entrega === "sim" ? tampa_Com_Furo = false : tampa_Com_Furo = true;
 
         if (refrigerantes.some(intem => intem.toLowerCase() === bebida.toLowerCase())) {
             copoPapel = true;
-
-            if (![300, 500, 700].includes(tamanho)) {
-                return res.status(400).json("Nossos tamanhos disponives são 300 (pequeno), 500(médio) ou 700 (grande).")
-            }
-
-            if (gelo) {
-                quantidadeGelo = 6;
-            }
-
-            if (viagem) {
-                tampaComFuro = true;
-            }
+            if (gelo) { quantidadeGelo = 6; }
         }
         else if (sucos.some(intem => intem.toLowerCase() === bebida.toLowerCase())) {
-            copoPlastico = true;
+            copoPapel = false;
             if (![300, 500].includes(tamanho)) {
-                return res.status(400).json("Nossos tamanhos disponives são 300 (pequeno) e 500(médio).")
+                return res.status(400).json("Para os sucos nossos tamanhos disponives são 300ml (pequeno) e 500ml(médio).")
             }
 
             if (gelo) {
                 quantidadeGelo = 12;
             }
-
-            if (viagem) {
-                tampaComFuro = true;
-            }
-        }
-        else {
-            const bebidas = refrigerantes.concat(sucos);
-            return res.status(400).json(`Nossas opções de bebidas são ${bebidas.join(', ')}.`)
         }
 
         const pedido = {
             bebida,
             tamanho: tamanho += " ml",
-            copo: copoPapel ? "Copo de Papel" : copoPlastico ? "Copo de Plastico" : "",
-            gelo: gelo ? "com gelo" : "sem gelo",
-            viagem: viagem ? "Sim" : "Não",
-            tampaComFuro: tampaComFuro ? "Sim" : "Não",
+            copo: copoPapel ? "Copo de Papel" : "Copo de Plastico",
+            gelo: gelo ? `${quantidadeGelo} cubos de gelo` : "sem gelo",
+            entrega: entrega ? "Não" : "Sim",
+            tampa: tampa_Com_Furo ? "Tampa com furo" : "Tampa sem furo",
         }
 
-        return res.status(201).json(pedido);
+        const pedidoRealizado = await knex('pedidos').insert(pedido).returning('*');
+        return res.status(201).json(pedidoRealizado);
 
     } catch (error) {
-        return res.status(500).json({ Mensagem: "Erro interno no servidor" })
+        return res.status(500).json({ Mensagem: "Erro interno no servidor" });
     }
-}
+};
+
 module.exports = {
     pedido
-}
+};
 
 
 
