@@ -27,7 +27,7 @@ const consulta = async (req, res) => {
 
         return res.status(200).json(tabela);
     } catch (error) {
-        return res.status(500).json({ Mensagem: "Erro interno no servidor" })
+        return res.status(500).json(error)
     }
 }
 
