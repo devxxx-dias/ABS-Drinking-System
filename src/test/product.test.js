@@ -9,7 +9,8 @@ const instacia = axios.create({
 
 
 
-
+const URL_DEPLOY_PEDIDO = 'https://abs-drinks.cyclic.app/pedido';
+const URL_DEPLOY_CONSULTA = 'https://abs-drinks.cyclic.app/consulta'
 
 const URL_ENDPOINT_PEDIDO = 'http://localhost:3000/pedido';
 const URL_ENDPOINT_CONSULTA = 'http://localhost:3000/consulta';
@@ -28,7 +29,7 @@ const INFO_CREATE_PEDIDO = {
 describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
     it('1.1 Deve retornar status 201 ao tentar criar um pedido', async () => {
         try {
-            const resposta = await instacia.post('/pedido', INFO_CREATE_PEDIDO);
+            const resposta = await instacia.post(URL_DEPLOY_PEDIDO, INFO_CREATE_PEDIDO);
             expect(resposta.status).to.equal(201);
         } catch (erro) {
             throw erro;
@@ -44,7 +45,7 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
         };
 
         try {
-            const resposta = await axios.post(URL_ENDPOINT_PEDIDO, bebidaComErro, {
+            const resposta = await axios.post(URL_DEPLOY_PEDIDO, bebidaComErro, {
                 validateStatus: (status) => status === 400,
             });
 
@@ -63,7 +64,7 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
         };
 
         try {
-            const resposta = await axios.post(URL_ENDPOINT_PEDIDO, bebidaVazia, {
+            const resposta = await axios.post(URL_DEPLOY_PEDIDO, bebidaVazia, {
                 validateStatus: (status) => status === 400,
             });
 
@@ -82,7 +83,7 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
         };
 
         try {
-            const resposta = await axios.post(URL_ENDPOINT_PEDIDO, tamanhoIncorreto, {
+            const resposta = await axios.post(URL_DEPLOY_PEDIDO, tamanhoIncorreto, {
                 validateStatus: (status) => status === 400,
             });
 
@@ -102,7 +103,7 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
         };
 
         try {
-            const resposta = await axios.post(URL_ENDPOINT_PEDIDO, tamanhoVazio, {
+            const resposta = await axios.post(URL_DEPLOY_PEDIDO, tamanhoVazio, {
                 validateStatus: (status) => status === 400,
             });
 
@@ -121,7 +122,7 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
         };
 
         try {
-            const resposta = await axios.post(URL_ENDPOINT_PEDIDO, erroNoGelo, {
+            const resposta = await axios.post(URL_DEPLOY_PEDIDO, erroNoGelo, {
                 validateStatus: (status) => status === 400,
             });
 
@@ -140,7 +141,7 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
         };
 
         try {
-            const resposta = await axios.post(URL_ENDPOINT_PEDIDO, geloVazio, {
+            const resposta = await axios.post(URL_DEPLOY_PEDIDO, geloVazio, {
                 validateStatus: (status) => status === 400,
             });
 
@@ -159,7 +160,7 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
         };
 
         try {
-            const resposta = await axios.post(URL_ENDPOINT_PEDIDO, erroNaEntrega, {
+            const resposta = await axios.post(URL_DEPLOY_PEDIDO, erroNaEntrega, {
                 validateStatus: (status) => status === 400,
             });
 
@@ -178,7 +179,7 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
         };
 
         try {
-            const resposta = await axios.post(URL_ENDPOINT_PEDIDO, entregaVazia, {
+            const resposta = await axios.post(URL_DEPLOY_PEDIDO, entregaVazia, {
                 validateStatus: (status) => status === 400,
             });
 
@@ -194,7 +195,7 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
     it('2.1 Deve retornar status 200 ao realizar uma consulta de todos os pedidos, quando a query paramenter "campo" não for "Selecionada"', async () => {
 
         try {
-            const resposta = await axios.get(URL_ENDPOINT_CONSULTA);
+            const resposta = await axios.get(URL_DEPLOY_CONSULTA);
 
             expect(resposta.status).to.equal(200);
         } catch (erro) {
@@ -209,7 +210,7 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
                 campo: 'id'
             };
 
-            const resposta = await axios.get(URL_ENDPOINT_CONSULTA, {
+            const resposta = await axios.get(URL_DEPLOY_CONSULTA, {
                 params: queryParams
             });
 
@@ -226,7 +227,7 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
                 campo: 'data_criacao'
             };
 
-            const resposta = await axios.get(URL_ENDPOINT_CONSULTA, {
+            const resposta = await axios.get(URL_DEPLOY_CONSULTA, {
                 params: queryParams
             });
 
@@ -243,7 +244,7 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
                 campo: 'bebida'
             };
 
-            const resposta = await axios.get(URL_ENDPOINT_CONSULTA, {
+            const resposta = await axios.get(URL_DEPLOY_CONSULTA, {
                 params: queryParams
             });
 
@@ -260,7 +261,7 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
                 campo: 'copo'
             };
 
-            const resposta = await axios.get(URL_ENDPOINT_CONSULTA, {
+            const resposta = await axios.get(URL_DEPLOY_CONSULTA, {
                 params: queryParams
             });
 
@@ -277,7 +278,7 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
                 campo: 'tamanho'
             };
 
-            const resposta = await axios.get(URL_ENDPOINT_CONSULTA, {
+            const resposta = await axios.get(URL_DEPLOY_CONSULTA, {
                 params: queryParams
             });
 
@@ -294,7 +295,7 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
                 campo: 'gelo'
             };
 
-            const resposta = await axios.get(URL_ENDPOINT_CONSULTA, {
+            const resposta = await axios.get(URL_DEPLOY_CONSULTA, {
                 params: queryParams
             });
 
@@ -311,7 +312,7 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
                 campo: 'entrega'
             };
 
-            const resposta = await axios.get(URL_ENDPOINT_CONSULTA, {
+            const resposta = await axios.get(URL_DEPLOY_CONSULTA, {
                 params: queryParams
             });
 
@@ -328,7 +329,7 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
                 campo: 'tampa'
             };
 
-            const resposta = await axios.get(URL_ENDPOINT_CONSULTA, {
+            const resposta = await axios.get(URL_DEPLOY_CONSULTA, {
                 params: queryParams
             });
 
@@ -345,7 +346,7 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
                 campo: 'tipo de saída'
             };
 
-            const resposta = await axios.get(URL_ENDPOINT_CONSULTA, {
+            const resposta = await axios.get(URL_DEPLOY_CONSULTA, {
                 params: queryParams
             });
 
