@@ -39,8 +39,7 @@ const pedido = async (req, res) => {
         return res.status(201).json(pedidoRealizado);
 
     } catch (error) {
-
-        return res.status(500).json({ error });
+        return res.status(500).json({ Mensagem: "Erro interno no servidor" });
     }
 };
 
