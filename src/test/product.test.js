@@ -12,8 +12,6 @@ const instacia = axios.create({
 const URL_DEPLOY_PEDIDO = 'https://abs-drinks.cyclic.app/pedido';
 const URL_DEPLOY_CONSULTA = 'https://abs-drinks.cyclic.app/consulta'
 
-const URL_ENDPOINT_PEDIDO = 'http://localhost:3000/pedido';
-const URL_ENDPOINT_CONSULTA = 'http://localhost:3000/consulta';
 
 
 
@@ -355,6 +353,5 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
             throw erro;
         }
     });
-
 });
 
