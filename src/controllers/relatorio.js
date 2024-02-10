@@ -12,7 +12,10 @@ const consulta = async (req, res) => {
 
         if (campo) {
             if (columnNames.includes(campo)) {
-                tabela = await knex("pedidos").select(campo).count().groupBy(campo).first()
+                tabela = await knex("pedidos")
+                    .select(campo)
+                    .count('*')
+                    .groupBy(campo);
             }
             else {
                 return res.status(400).json(`Verifique se o campo foi preenchido corretamente com os dados da tabela. Escolha um desses campos para realizar a sua consulta: ${columnNames.join(', ')}`)
