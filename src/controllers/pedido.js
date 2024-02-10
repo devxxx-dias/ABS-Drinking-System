@@ -1,4 +1,4 @@
-const knex = require('../config/conexao')
+const knex = require('../config/conexao');
 const { refrigerantes, sucos } = require('../bebidasBancoDeDados');
 const pedido = async (req, res) => {
     let { bebida, tamanho, gelo, entrega } = req.body
@@ -45,7 +45,7 @@ const pedido = async (req, res) => {
 
 module.exports = {
     pedido
-};
+}
 
 
 

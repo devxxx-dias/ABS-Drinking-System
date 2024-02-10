@@ -31,4 +31,4 @@ const consulta = async (req, res) => {
     }
 }
 
-module.exports = consulta
+module.exports = consulta;

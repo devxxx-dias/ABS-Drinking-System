@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { bebidas } = require('../bebidasBancoDeDados')
+const { bebidas } = require('../bebidasBancoDeDados');
 
 const checar_Pedido = Joi.object({
     bebida: Joi.string().lowercase().required().valid(...bebidas).messages({
