@@ -22,12 +22,9 @@ const consulta = async (req, res) => {
             tabela = await knex('pedidos');
         }
 
-        const relatorio = await fs.writeFile('./src/relatorio.txt', JSON.stringify(tabela))
-
-
         return res.status(200).json(tabela);
     } catch (error) {
-        return res.status(500).json(error)
+        return res.status(500).json({ Mensagem: "Erro interno no servidor" })
     }
 }
 
