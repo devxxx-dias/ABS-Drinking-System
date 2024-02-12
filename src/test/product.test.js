@@ -12,10 +12,10 @@ const INFO_CREATE_PEDIDO = {
 }
 
 
-describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
+describe('1.0 Teste de Requisicao POST para criar um pedido', async () => {
     it('1.1 Deve retornar status 201 ao tentar criar um pedido', async () => {
         try {
-            const resposta = await instacia.post(URL_DEPLOY_PEDIDO, INFO_CREATE_PEDIDO);
+            const resposta = await axios.post(URL_DEPLOY_PEDIDO, INFO_CREATE_PEDIDO);
             expect(resposta.status).to.equal(201);
         } catch (erro) {
             throw erro;
@@ -176,7 +176,7 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
     });
 });
 
-describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos registrados', () => {
+describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos registrados', async () => {
 
     it('2.1 Deve retornar status 200 ao realizar uma consulta de todos os pedidos, quando a query paramenter "campo" não for "Selecionada"', async () => {
 
@@ -327,19 +327,23 @@ describe('2.0 Teste de Requisição GET para Realizar Consulta dos pedidos regis
 
     it('2.10 Deve retornar status 400 quando o campo query parameter estiver selecionado e o campo for preenchido com qualquer valor que não seja da coluna do banco de dados', async () => {
         try {
-
             const queryParams = {
-                campo: 'tipo de saída'
+                campo: 'suquinho'
             };
 
             const resposta = await axios.get(URL_DEPLOY_CONSULTA, {
                 params: queryParams
             });
 
-            expect(resposta.status).to.equal(400);
+            throw new Error('Expected request to fail with status code 400');
         } catch (erro) {
-            throw erro;
+            if (erro.isAxiosError && erro.response && erro.response.status === 400) {
+                return;
+            } else {
+                throw erro;
+            }
         }
     });
+    ;
 });
 
