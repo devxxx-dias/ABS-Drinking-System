@@ -2,8 +2,8 @@ const { Router } = require('express')
 
 const validarJoi_Body = require('../middleware/validarJoi');
 const checar_Pedido = require('../validation/schemaPedido');
-const consulta = require('../controllers/ConsultaController');
-const lancarPedido = require('./src/controllers/PedidoController.js');
+const consulta = require('../controllers/consultaController');
+const lancarPedido = require('../controllers/pedidoController');
 
 
 const router = Router();
