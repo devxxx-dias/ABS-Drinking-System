@@ -1,27 +1,22 @@
 import { expect } from "chai";
 import axios from "axios";
-// const axios = require('axios');
+
 
 const instacia = axios.create({
     baseURL: 'http://localhost:3000'
 })
-
-
-
 
 const URL_DEPLOY_PEDIDO = 'https://abs-drinks.cyclic.app/pedido';
 const URL_DEPLOY_CONSULTA = 'https://abs-drinks.cyclic.app/consulta'
 
 
 
-
 const INFO_CREATE_PEDIDO = {
-    bebida: "Coca",
-    tamanho: 500,
+    opcao_Bebida: "Guaraná",
+    tamanho: 700,
     gelo: "sim",
-    entrega: "não"
-
-};
+    opcao_Entrega: "não"
+}
 
 
 describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
@@ -36,10 +31,10 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
 
     it('1.2 Deve retornar status 400 se o campo bebida não estiver preenchido com um item inexistente no banco de dados', async () => {
         const bebidaComErro = {
-            bebida: "Coc@",
+            opcao_Bebida: "Coc@",
             tamanho: 500,
             gelo: "sim",
-            entrega: "não"
+            opcao_Entrega: "não"
         };
 
         try {
@@ -55,10 +50,10 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
 
     it('1.2.1 Deve retornar status 400 se o campo bebida não for preenchido', async () => {
         const bebidaVazia = {
-            bebida: "",
+            opcao_Bebida: "",
             tamanho: 500,
             gelo: "sim",
-            entrega: "não"
+            opcao_Entrega: "não"
         };
 
         try {
@@ -74,10 +69,10 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
 
     it('1.3 Deve retornar status 400 se o campo tamanho for preenchido com uma opção indisponível para bebida selecionada (aceita String)', async () => {
         const tamanhoIncorreto = {
-            bebida: "Coca",
+            opcao_Bebida: "Coca",
             tamanho: -1,
             gelo: "sim",
-            entrega: "não"
+            opcao_Entrega: "não"
         };
 
         try {
@@ -94,10 +89,10 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
 
     it('1.3.1 Deve retornar status 400 se o campo tamanho não for preenchido', async () => {
         const tamanhoVazio = {
-            bebida: "Coca",
+            opcao_Bebida: "Coca",
             tamanho: "",
             gelo: "sim",
-            entrega: "não"
+            opcao_Entrega: "não"
         };
 
         try {
@@ -113,10 +108,10 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
 
     it('1.4 Deve retornar status 400 se a opção selecionada para o gelo não for apenas "SIM" ou "NÃO" (non sensitive case)', async () => {
         const erroNoGelo = {
-            bebida: "Coca",
+            opcao_Bebida: "Coca",
             tamanho: 500,
             gelo: "si",
-            entrega: "não"
+            opcao_Entrega: "não"
         };
 
         try {
@@ -132,10 +127,10 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
 
     it('1.4.1 Deve retornar status 400 se o campo gelo não for preenchido', async () => {
         const geloVazio = {
-            bebida: "Coca",
+            opcao_Bebida: "Coca",
             tamanho: 500,
             gelo: "",
-            entrega: "não"
+            opcao_Entrega: "não"
         };
 
         try {
@@ -151,10 +146,10 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
 
     it('1.5 Deve retornar status 400 se a opção selecionada para entrega não for apenas "SIM" ou "NÃO" (non sensitive case)', async () => {
         const erroNaEntrega = {
-            bebida: "Coca",
+            opcao_Bebida: "Coca",
             tamanho: 500,
             gelo: "sim",
-            entrega: "talvez"
+            opcao_Entrega: "talvez"
         };
 
         try {
@@ -170,10 +165,10 @@ describe('1.0 Teste de Requisicao POST para criar um pedido', () => {
 
     it('1.5.1 Deve retornar status 400 se o entrega não for preenchido', async () => {
         const entregaVazia = {
-            bebida: "Coca",
+            opcao_Bebida: "Coca",
             tamanho: 500,
             gelo: "não",
-            entrega: ""
+            opcao_Entrega: ""
         };
 
         try {
