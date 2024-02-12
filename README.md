@@ -27,18 +27,18 @@ Abra o Isomnia e verifque se está no endpoint correto **POST (Novo Pedido)**, e
 
                                          Figura 1 - Checando as variáveis da interface
 
-![image](https://github.com/devxxx-dias/ABS-Drinking-System/assets/104696883/ec7b259d-1726-4b9e-910e-e9c78da1cddb)
+![image](https://github.com/devxxx-dias/ABS-Drinking-System/assets/104696883/89f50b1a-e175-4f9c-bd50-00162206a66e)
 
 &nbsp;
 
 Caso positivo siga:
-**Bebida**: Nesse campo escreva uma das opções de bebidas disponíveis **(“Coca”, “Guaraná”, “Suco de Uva” ou “Suco de Laranja”)**, nesse campo também será definido o **tipo de copo**, sendo de o de papel para os refrigerantes, e de plástico para os sucos. As opções **podem não são case-sensitive**, podem ser escritas em maiúsculas ou minúsculas.
+**Opcao_Bebida**: Nesse campo escreva uma das opções de bebidas disponíveis **(“Coca”, “Guaraná”, “Suco de Uva” ou “Suco de Laranja”)**, nesse campo também será definido o **tipo de copo**, sendo de o de papel para os refrigerantes, e de plástico para os sucos. As opções **podem não são case-sensitive**, podem ser escritas em maiúsculas ou minúsculas.
 
 **Tamanho**: Nesse campo só aceita os tamanhos disponíveis de copo, sendo para os refrigerantes **3 opções (300, 500 ou 700ml)** e para os **sucos (300 ou 500ml)**, caso insira alguma entrada fora das opções o sistema gera uma mensagem de erro.
 
 **Gelo**: O campo só aceita as opções escrita **“sim” ou “não”**, onde os **refrigerantes recebem 6 cubos de gelos e os sucos 12 cubos**. Caso negativo, a resposta será “Sem Gelo”. Esse campo também não é case-sensitive.
 
-**Entrega**: Assim como o campo gelo, este campo só aceita as opções escrita **“sim” ou “não”**, pois aqui é definido o tipo de **tampa “com” ou “sem” furo, para entrega/viagem a tampa deve ser sem furo, para consumo na loja**, a tampa deve ser com furo. Campo non case-sensitive.
+**Opcao_Entrega**: Assim como o campo gelo, este campo só aceita as opções escrita **“sim” ou “não”**, pois aqui é definido o tipo de **tampa “com” ou “sem” furo, para entrega/viagem a tampa deve ser sem furo, para consumo na loja**, a tampa deve ser com furo. Campo non case-sensitive.
 
 Resultado esperado:
 Seguindo o “caminho da felicidade”, onde não há erros , segue o resultado esperado.
@@ -57,7 +57,7 @@ O pedido é composto por:
 
                                            Figura 2 - Resultado esperado – Emissão de pedido
 
-  ![image](https://github.com/devxxx-dias/ABS-Drinking-System/assets/104696883/175ede50-04b5-4c45-9b4f-dc4e5e98c927)
+ ![image](https://github.com/devxxx-dias/ABS-Drinking-System/assets/104696883/cf970bb2-6d43-4a9c-b42a-de006ff6d254)
 
 &nbsp;
 
