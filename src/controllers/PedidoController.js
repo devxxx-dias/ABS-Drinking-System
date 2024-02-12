@@ -17,4 +17,4 @@ const pedido = async (req, res) => {
     }
 };
 
-module.exports = { pedido };
+module.exports = pedido;
