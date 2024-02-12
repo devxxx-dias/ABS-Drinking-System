@@ -1,14 +1,12 @@
-const { Router } = require('express')
-
+const { Router } = require('express');
 const validarJoi_Body = require('../middleware/validarJoi');
 const checar_Pedido = require('../validation/schemaPedido');
-const consulta = require('../controllers/consultaController');
+const realizarConsulta = require('../controllers/ConsultaController');
 const lancarPedido = require('../controllers/pedidoController');
-
 
 const router = Router();
 
-router.get('/consulta', consulta)
+router.get('/consulta', realizarConsulta)
 
 router.post('/pedido', validarJoi_Body(checar_Pedido), lancarPedido)
 

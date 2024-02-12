@@ -2,7 +2,7 @@ const knex = require('../config/conexao');
 const Consulta = require('../model/Consulta');
 
 
-const consulta = async (req, res) => {
+const realizarConsulta = async (req, res) => {
     const { campo } = req.query
 
     try {
@@ -14,5 +14,8 @@ const consulta = async (req, res) => {
         return res.status(500).json({ Mensagem: "Erro interno no servidor" })
     }
 
+
 }
-module.exports = consulta;
+
+module.exports = realizarConsulta;
+
