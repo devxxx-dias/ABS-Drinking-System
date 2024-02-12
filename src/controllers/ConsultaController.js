@@ -1,4 +1,3 @@
-
 const knex = require('../config/conexao');
 const Consulta = require('../model/Consulta');
 

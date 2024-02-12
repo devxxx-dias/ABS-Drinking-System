@@ -1,7 +1,7 @@
 const Bebida = require("../model/Bebida");
 const Pedido = require("../model/Pedido");
 
-const pedido = async (req, res) => {
+const lancarPedido = async (req, res) => {
     let { opcao_Bebida, tamanho, gelo, opcao_Entrega } = req.body
 
     try {
@@ -17,4 +17,4 @@ const pedido = async (req, res) => {
     }
 };
 
-module.exports = pedido;
+module.exports = lancarPedido;
