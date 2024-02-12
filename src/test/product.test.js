@@ -1,15 +1,8 @@
 import { expect } from "chai";
 import axios from "axios";
 
-
-const instacia = axios.create({
-    baseURL: 'http://localhost:3000'
-})
-
 const URL_DEPLOY_PEDIDO = 'https://abs-drinks.cyclic.app/pedido';
 const URL_DEPLOY_CONSULTA = 'https://abs-drinks.cyclic.app/consulta'
-
-
 
 const INFO_CREATE_PEDIDO = {
     opcao_Bebida: "Guaraná",
