@@ -1,5 +1,5 @@
 
-create database abs;
+create database abs; --For localhost only
 
 
 create table pedidos (
